@@ -19,7 +19,9 @@ struct node
 	struct node *next;
 };
 
-struct node * reverseLinkedList(struct node *head) 
+//METHOD 1:: (Using Iteration)
+
+struct node * reverseLinkedList(struct node *head)
 {
 	struct node  *node1 = NULL, *node2 = NULL;
 	while (head != NULL)
@@ -31,3 +33,28 @@ struct node * reverseLinkedList(struct node *head)
 	}
 	return node1;
 }
+
+/*
+
+METHOD 2:: (Using Recursion)
+
+void makeLinkedListReversed(struct node *head, struct node **newHead, struct node *pre)
+{
+	if (head->next != NULL)
+	{
+		*newHead = head->next;
+		makeLinkedListReversed(head->next, newHead, head);
+	}
+	head->next = pre;
+}
+
+struct node * reverseLinkedList(struct node *head)
+{
+	struct node *newHead;
+	if (head == NULL || head->next == NULL)
+		return head;
+	makeLinkedListReversed(head, &newHead, NULL);
+	return newHead;
+}
+
+*/
